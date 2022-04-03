@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Deep Learning GPU Benchmark">
+  <meta name="author" content="Mengtian (Martin) Li">
+
+  <title>Deep Learning GPU Benchmark</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="gpubench.css?v=0.3">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- CDN for access in China -->
+  <script>
+    if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.slim.min.js'%3E%3C/script%3E"));
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="gpubench.js?v=0.1"></script>
+
+  <base target="_blank">
+</head>
+  
+<!-- colors used in the JavaScript -->
+<body
+	data-ub-color1="#4abdab"
+	data-ub-color2="#f7b733"
+	data-ub-color3="#fb4a1a"
+>
+
+<nav class="navbar">
+  <div class="navbar-decor"></div>
+  <div class="navbar-decor-triangle"></div>
+</nav>
+
+<div class="container">
+  <div class="row mb-4 text-center">
+    <div class="col-md-12">
+      <h1 class="mt-5">Deep Learning GPU Benchmark</h1>
+      <h2>A Latency-Based Approach</h2>
+    </div>
+  </div>
+
+  <div class="row text-center mb-3">
+    <div clsss="col">
+      <div class="author">
+        By <a class="hide-link" href="https://www.cs.cmu.edu/~mengtial/">Mengtian (Martin) Li </a>
+      </div>
+      <div class="update-date">Released April 3, 2022</div>
+    </div>
+  </div>
+</div>
+<div id="chart_div"></div>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col">
+      <div class="slider-container">
+        <span class="slider-label-left">Inference</span>
+        <input type="range" class="form-range number-slider" id="trainSlider">
+        <span class="slider-label-right">Training</span>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <div class="slider-container">
+        <span class="slider-label-left">Simple Tasks</span>
+        <input type="range" class="form-range number-slider" id="complexitySlider">
+        <span class="slider-label-right">Complex Tasks</span>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col text-center">
+      <p class="slider-instruct">Drag the sliders to adjust the weightings based on your application. Please see below for a detailed description.</p>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col text-center">
+      <button id="toggleNumbers" type="button" class="btn btn-secondary">Show Numbers</button>
+    </div>
+  </div>
+
+
+  <article class="mx-lg-5 mx-md-3 mx-sm-2">
+    <div class="row my-5">
+      <div class="col text-left">
+        <section>
+          <h3>What is this benchmark for?</h3>
+          <p>
+            The primary motivation behind this benchmark is to compare the runtime of algorithms reported using different GPUs. It is typical to find different GPUs used in different papers or codebases, making a fair comparison of their reported runtime a challenging task. <b>Fortunately, we observe that the runtime of most algorithms remains approximately inversely proportional to the performance of the GPU. Therefore, we can use this benchmark to estimate the runtime of an algorithm running on a different GPU</b>. For example, if a deep network takes 100 ms to run on GTX 1080 Ti, we estimate it takes 0.713/1.276×100 ≈ 56 ms to run on RTX 3090 based on this benchmark. This benchmark adopts a latency-based metric and may be relevant to people developing or deploying real-time algorithms.
+          </p>
+          <p>
+            <b>Of course, this benchmark can also be used as a GPU purchasing guide when you build your next deep learning rig. From this perspective, this benchmark aims to isolate GPU processing speed from the memory capacity</b>, in the sense that how fast your CPU is should not depend on how much memory you install in your machine. Hardware specs such as GPU microarchitecture, clock rate, memory bandwidth, and the number of CUDA cores will play prominent roles in this benchmark. Note that we are not claiming that memory is not important. It's just that the memory capacity is something you can look up easily through the spec sheet.
+          </p>
+        </section>
+        <section>
+          <h3>How is this benchmark different from existing ones?</h3>
+          <p>
+            <b>Most existing GPU benchmarks for deep learning are throughput-based</b> (throughput chosen as the primary metric) [<a class="ref-link" href="https://lambdalabs.com/gpu-benchmarks">1</a>,<a class="ref-link" href="https://www.aime.info/blog/deep-learning-gpu-benchmarks-2021/">2</a>]. However, throughput measures not only the performance of the GPU, but also the whole system, and such a metric may not accurately reflect the performance of the GPU. For example, the recent FFCV framework claims to achieve several times training speedup over standard PyTorch training and even NVIDIA's DALI simply by designing a better data loader [<a class="ref-link" href="https://ffcv.io/">4</a>]. Therefore, whether using an optimized data loader or not may greatly influence the GPU benchmark results. Some codebases define the throughput based on the GPU compute time and thus circumvent the above issue. But in order to maximize throughput, variable batch sizes are used for different GPUs to fill up all available GPU memory. We point out that maximizing the batch size is not always possible in practice. During training, increasing the batch size may lead to accuracy drops. People have proposed several heuristics, such as the linear scaling rule, to address this issue, but these heuristics do not guarantee to work well for all the models. Consequently, one cannot alter the batch size freely if one wishes to maintain the original accuracy of the model. During inference, the batch size is entirely possible to be limited to just one. For example, an online or interactive setting might force the model to process only one example at a time before waiting for the next example to arrive. For people familiar with CPU benchmarks, the setting of variable batch sizes vs. a constant batch size for GPUs is analogous to the setting of multi-core vs. single-thread for CPUs --- while it is great to have over a dozen CPU cores, not all applications can make efficient use of these cores. <b>By adopting a constant data size across GPUs, we isolate the GPU processing speed from the memory capacity</b>. Another latency-based GPU benchmark also exists [<a class="ref-link" href="https://ai-benchmark.com/ranking_cpus_and_gpus.html">3</a>], but it only has TensorFlow benchmarks and only includes pre-Ampere (old) GPUs. That being said, these existing benchmarks are still useful depending on your application, and <b>our benchmark is designed to complement them with an alternative perspective</b>.
+          </p>
+        </section>
+        <section>
+          <h3>How is the performance measured?</h3>
+          <h4>Latency measurement</h4>
+          <p>
+            We measure the model latency under two settings and for two tasks:
+            <ul>
+              <li>
+                <b>Inference:</b> we measure the latency of a forward pass, including postprocessing, but not preprocessing, which is typically done on CPUs.
+              </li>
+              <li>
+                <b>Training:</b> we measure the latency of a forward pass and a backward pass, including loss computation and parameter updates. Similarly, we don't include any data preprocessing time.
+              </li>
+              <li>
+                <b>Simple tasks:</b> we choose ImageNet classification with ResNet-50 as the representative simple task [<a class="ref-link" href="https://arxiv.org/abs/1512.03385">4</a>]. The model uses only standard operations, there are no postprocessing steps, and all tensors remain fixed sizes throughout the network.
+              </li>
+              <li>
+                <b>Complex tasks:</b> we choose MS COCO object detection with Faster R-CNN (FPN) to be the representative complex task[<a class="ref-link" href="https://arxiv.org/abs/1506.01497">5</a>,<a class="ref-link" href="https://arxiv.org/abs/1612.03144">6</a>]. The model uses non-standard operations like RoIAlign and non-maximum suppression (NMS). The tensor size varies depending on the outcome of NMS in the first stage.
+              </li>
+            </ul>
+            <p>
+              <b>Batch size:</b> for inference, we use batch size 1 for all tasks since we are interested in the latency in the online setting. This batch size setting is consistent with standard object detection evaluation, but different from standard classification evaluation. For training, we use the default batch size for all tasks, which is 64 per GPU for ImageNet classification and 2 per GPU for MS COCO detection.
+            </p>
+          </p>
+
+          <h4>Performance calculation</h4>
+          <p>
+            After we obtain all the latency measures, we first select one GPU as the baseline, which is V100 in our case, since it has been widely used in many algorithm and hardware benchmarks. Next, we divide the latency of the baseline by the latency of each GPU to get the performance scores under each setting. Then we linearly combine the scores based on the weightings:
+          </p>
+          <div class="begin-align">
+            <img src="img/score-math.png" style="height:3em">
+          </div>
+          <p class="no-indent">
+            where <span class="math">S</span>, <span class="math">T</span> denote settings and tasks respectively, <span class="math">α</span> and <span class="math">β</span> are the respective weightings, <span class="math">𝜏</span> is the baseline timing.
+          </p>
+          <p>
+            <b>Adjustable weightings:</b> you can drag the sliders above to adjust the weights. The first slider controls the weightings for inference and training (<span class="math">α</span>), and the second controls the weightings between tasks (<span class="math">β</span>). Using a matching set of weightings with your application can help you better estimate the runtime of algorithms across GPUs.
+          </p>
+
+          <h4>Implementation</h4>
+          <p>
+            We use PyTorch-based implementation for all tasks. Specifically, we use <a href="https://github.com/mtli/llcv">llcv</a> 0.0.6 and <a href="https://github.com/open-mmlab/mmdetection">mmdetection</a> 2.21.0 for image classification and object detection respectively. We synchronize CUDA kernels before calling the timers. We use a single GPU for both training and inference. By default, we benchmark under CUDA 11.3 and PyTorch 1.10. The performance of TITAN RTX was measured using an old software environment (CUDA 10.0 and PyTorch 1.1). We also measured V100 under the old environment to get a performance ratio between the two.
+          </p>
+          <p class="no-indent mt-3">The code is open-sourced on
+            <a href="https://github.com/mtli/DLGPUBench">
+              <img src="../_img_/GitHub-Mark-64px.png" style="width:25px">
+            </a>
+          </p>
+        </section>
+        <section>
+          <h3>Questions or comments?</h3>
+          <p>
+            Feel free to post them under <a href="https://github.com/mtli/DLGPUBench/discussions">Github discussions</a> or just shoot me an <a href="mailto:martinli.work@gmail.com">email</a>.
+          </p>
+          <h4>What about Transformers and FP16?</h4>
+          <p>
+            They are not yet covered in this benchmark, and we might add them in the future. Community contributions are always welcome! One note is that FP32 training is still relevant today for research where novel (weird) network architectures are being explored. FP16 (or mixed precision) training may be numerically unstable.
+          </p>
+        </section>
+      </div>
+    </div>
+  </article>
+</div>
+
+<footer class="text-center mt-4">
+  <span>Ⓒ  &nbsp; 2022 &nbsp; <a class="hide-link" href="https://www.cs.cmu.edu/~mengtial/">Mengtian (Martin) Li</a> &nbsp;</span>
+</footer>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71310278-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-71310278-2');
+</script>
+</body>
+</html>
