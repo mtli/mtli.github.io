@@ -50,32 +50,35 @@
     </div>
   </div>
 
-  <div class="row text-center mb-3">
+  <div class="row text-center mb-1">
     <div clsss="col">
       <div class="author">
         By <a class="hide-link" href="https://www.cs.cmu.edu/~mengtial/">Mengtian (Martin) Li </a>
       </div>
-      <div class="update-date">Released April 3, 2022</div>
+      <div class="update-date">Released April 3, 2022 and updated April 21, 2022</div>
+      <div class="update-date">Version 1.1</div>
     </div>
   </div>
 </div>
+
 <div id="chart_div"></div>
+
 <div class="container">
   <div class="row mt-4">
     <div class="col">
       <div class="slider-container">
-        <span class="slider-label-left">Inference</span>
-        <input type="range" class="form-range number-slider" id="trainSlider">
-        <span class="slider-label-right">Training</span>
+        <span class="slider-label-left">Simple Tasks</span>
+        <input type="range" class="form-range number-slider" id="complexitySlider">
+        <span class="slider-label-right">Complex Tasks</span>
       </div>
     </div>
   </div>
   <div class="row mt-2">
     <div class="col">
       <div class="slider-container">
-        <span class="slider-label-left">Simple Tasks</span>
-        <input type="range" class="form-range number-slider" id="complexitySlider">
-        <span class="slider-label-right">Complex Tasks</span>
+        <span class="slider-label-left">Inference</span>
+        <input type="range" class="form-range number-slider" id="trainSlider">
+        <span class="slider-label-right">Training</span>
       </div>
     </div>
   </div>
@@ -100,13 +103,13 @@
             The primary motivation behind this benchmark is to compare the runtime of algorithms reported using different GPUs. It is typical to find different GPUs used in different papers or codebases, making a fair comparison of their reported runtime a challenging task. <b>Fortunately, we observe that the runtime of most algorithms remains <i>approximately</i> inversely proportional to the performance of the GPU. Therefore, we can use this benchmark to estimate the runtime of an algorithm running on a different GPU.</b> Taking V100 and RTX 3090 as the example GPU pairs, we derive the performance ratio in this benchmark based on the latency measurements of Faster R-CNN (ResNet-50 backboned): 39.72/31.01 ≈ 1.281 (complex tasks, inference). Next, we can estimate the runtime of a similar task on V100 or RTX 3090, given the measurement on either GPUs. For example, given Mask R-CNN (Swin Transformer backboned) measuring 62.76 ms on V100, we estimate its runtime on RTX 3090 to be 62.76/1.281 ≈ 48.99 ms, which is very close to the actual measurement of 48.47 ms. This benchmark adopts a latency-based metric and may be relevant to people developing or deploying real-time algorithms.
           </p>
           <p>
-            <b>Of course, this benchmark can also be used as a GPU purchasing guide when you build your next deep learning rig. From this perspective, this benchmark aims to isolate GPU processing speed from the memory capacity</b>, in the sense that how fast your CPU is should not depend on how much memory you install in your machine. Hardware specs such as GPU microarchitecture, clock rate, memory bandwidth, and the number of CUDA cores will play prominent roles in this benchmark. Note that we are not claiming that memory is not important. It's just that the memory capacity is something you can look up easily through the spec sheet.
+            <b>This benchmark can also be used as a GPU purchasing guide when you build your next deep learning rig. From this perspective, this benchmark aims to isolate GPU processing speed from the memory capacity</b>, in the sense that how fast your CPU is should not depend on how much memory you install in your machine. Hardware specs such as GPU microarchitecture, clock rate, memory bandwidth, and the number of CUDA cores will play prominent roles in this benchmark. Note that we are not claiming that memory is not important. It's just that the memory capacity is something you can look up easily through the spec sheet.
           </p>
         </section>
         <section>
           <h3>How is this benchmark different from existing ones?</h3>
           <p>
-            <b>Most existing GPU benchmarks for deep learning are throughput-based</b> (throughput chosen as the primary metric) [<a class="ref-link" href="https://lambdalabs.com/gpu-benchmarks">1</a>,<a class="ref-link" href="https://www.aime.info/blog/deep-learning-gpu-benchmarks-2021/">2</a>]. However, throughput measures not only the performance of the GPU, but also the whole system, and such a metric may not accurately reflect the performance of the GPU. For example, the recent FFCV framework claims to achieve several times training speedup over standard PyTorch training and even NVIDIA's DALI simply by designing a better data loader [<a class="ref-link" href="https://ffcv.io/">4</a>]. Therefore, whether using an optimized data loader or not may greatly influence the GPU benchmark results. Some codebases define the throughput based on the GPU compute time and thus circumvent the above issue. But in order to maximize throughput, variable batch sizes are used for different GPUs to fill up all available GPU memory. We point out that maximizing the batch size is not always possible in practice. During training, increasing the batch size may lead to accuracy drops [<a class="ref-link" href="https://twitter.com/ylecun/status/989610208497360896">5</a>]. People have proposed several heuristics, such as the linear scaling rule [<a class="ref-link" href="https://arxiv.org/abs/1706.02677">6</a>], to address this issue, but these heuristics either are too complicated or don't work well for all the models. Consequently, one cannot alter the batch size freely if one wishes to maintain the original accuracy of the model. During inference, the batch size is entirely possible to be limited to just one. For example, an online or interactive setting might force the model to process only one example at a time before waiting for the next example to arrive. For people familiar with CPU benchmarks, the setting of variable batch sizes vs. a constant batch size for GPUs is analogous to the setting of multi-core vs. single-thread for CPUs --- while it is great to have over a dozen CPU cores, not all applications can make efficient use of these cores. <b>By adopting a constant data size across GPUs, we isolate the GPU processing speed from the memory capacity</b>. Another latency-based GPU benchmark also exists [<a class="ref-link" href="https://ai-benchmark.com/ranking_cpus_and_gpus.html">7</a>], but it only has TensorFlow benchmarks and only includes pre-Ampere (old) GPUs. That being said, these existing benchmarks are still useful depending on your application, and <b>our benchmark is designed to complement them with an alternative perspective</b>.
+            <b>Most existing GPU benchmarks for deep learning are throughput-based</b> (throughput chosen as the primary metric) [<a class="ref-link" href="https://lambdalabs.com/gpu-benchmarks">1</a>,<a class="ref-link" href="https://www.aime.info/blog/deep-learning-gpu-benchmarks-2021/">2</a>]. However, throughput measures not only the performance of the GPU, but also the whole system, and such a metric may not accurately reflect the performance of the GPU. For example, the recent FFCV framework claims to achieve several times training speedup over standard PyTorch training and even NVIDIA's DALI simply by designing a better data loader [<a class="ref-link" href="https://ffcv.io/">4</a>]. Therefore, whether using an optimized data loader or not may greatly influence the GPU benchmark results. Some codebases define the throughput based on the GPU compute time and thus circumvent the above issue. But in order to maximize throughput, variable batch sizes are used for different GPUs to fill up all available GPU memory. We point out that maximizing the batch size is not always possible in practice. During training, increasing the batch size may lead to accuracy drops [<a class="ref-link" href="https://twitter.com/ylecun/status/989610208497360896">5</a>]. People have proposed several heuristics, such as the linear scaling rule [<a class="ref-link" href="https://arxiv.org/abs/1706.02677">6</a>], to address this issue, but these heuristics either are too complicated or not versatile enough for all the models. Consequently, one cannot alter the batch size freely if one wishes to maintain the original accuracy of the model. During inference, the batch size is entirely possible to be limited to just one. For example, an online or interactive setting might force the model to process only one example at a time before waiting for the next example to arrive. For people familiar with CPU benchmarks, the setting of maxing out batch size vs. fixing the batch size for GPUs is analogous to the setting of multi-core vs. single-thread benchmarking for CPUs --- while it is great to have over a dozen CPU cores, not all applications can make efficient use of all these cores. <b>By adopting a fixed data size across all GPUs, we isolate the GPU processing speed from the memory capacity</b>. Another latency-based GPU benchmark also exists [<a class="ref-link" href="https://ai-benchmark.com/ranking_cpus_and_gpus.html">7</a>], but it only has TensorFlow benchmarks and includes only pre-Ampere (old) GPUs. That being said, these existing benchmarks are still useful depending on your application, and <b>our benchmark is designed to complement them with an alternative perspective</b>.
           </p>
         </section>
         <section>
@@ -129,13 +132,13 @@
               </li>
             </ul>
             <p>
-              <b>Batch size:</b> for inference, we use batch size 1 for all tasks since we are interested in the latency in the online setting. This batch size setting is consistent with standard object detection evaluation, but different from standard classification evaluation. For training, we use the default batch size for all tasks, which is 64 per GPU for ImageNet classification and 2 per GPU for MS COCO detection.
+              <b>Batch size:</b> For ImageNet classification, we use the default batch size for both training and inference, which is 64 per GPU. We have also tried (in version 1.0) to use a batch size 1 but found such a small workload tend to produce noisy measurements as other system factors come into play. For complex tasks MS COCO object detection, we use batch size 1 for inference to be consistent with the standard evaluation, and use the default batch size 2 per GPU for training.
             </p>
           </p>
 
           <h4>Performance calculation</h4>
           <p>
-            After we obtain all the latency measures, we first select one GPU as the baseline, which is V100 in our case, since it has been widely used in many algorithm and hardware benchmarks. Next, we divide the latency of the baseline by the latency of each GPU to get the performance scores under each setting. Then we linearly combine the scores based on the weightings:
+            After we obtain all the latency measures, we first select one GPU as the baseline, which is V100 in our case, since it has been widely used in many algorithm and hardware benchmarks[<a class="ref-link" href="https://arxiv.org/abs/1911.09070">11</a>,<a class="ref-link" href="https://www.cs.cmu.edu/~mengtial/proj/streaming/">12</a>]. Next, we divide the latency of the baseline by the latency of each GPU to get the performance scores under each setting. Then we linearly combine the scores based on the weightings:
           </p>
           <div class="begin-align">
             <img src="img/score-math.png" style="height:3em">
@@ -144,17 +147,17 @@
             where <span class="math">S</span>, <span class="math">T</span> denote settings and tasks respectively, <span class="math">α</span> and <span class="math">β</span> are the respective weightings, <span class="math">𝜏</span> is the baseline timing.
           </p>
           <p>
-            <b>Adjustable weightings:</b> you can drag the sliders above to adjust the weights. The first slider controls the weightings for inference and training (<span class="math">α</span>), and the second controls the weightings between tasks (<span class="math">β</span>). Using a matching set of weightings with your application can help you better estimate the runtime of algorithms across GPUs.
+            <b>Adjustable weightings:</b> you can drag the sliders above to adjust the weights. One slider controls the weightings for inference and training (<span class="math">α</span>), and the other one controls the weightings between tasks (<span class="math">β</span>). Using a matching set of weightings with your application can help you better estimate the runtime of algorithms across GPUs.
           </p>
 
           <h4>Implementation</h4>
           <p>
-            We use PyTorch-based implementation for all tasks. Specifically, we use <a href="https://github.com/mtli/llcv">llcv</a> 0.0.6 and <a href="https://github.com/open-mmlab/mmdetection">mmdetection</a> 2.21.0 for image classification and object detection respectively. We synchronize CUDA kernels before calling the timers. We use a single GPU for both training and inference. By default, we benchmark under CUDA 11.3 and PyTorch 1.10. The performance of TITAN RTX was measured using an old software environment (CUDA 10.0 and PyTorch 1.1). We also measured V100 under the old environment to get a performance ratio between the two.
+            We use PyTorch-based implementation for all tasks. Specifically, we use <a href="https://github.com/mtli/llcv">llcv</a> 0.0.9 and <a href="https://github.com/open-mmlab/mmdetection">mmdetection</a> 2.21.0 for image classification and object detection respectively. We synchronize CUDA kernels before calling the timers. We use a single GPU for both training and inference. By default, we benchmark under CUDA 11.3 and PyTorch 1.10. The performance of TITAN RTX was measured using an old software environment (CUDA 10.0 and PyTorch 1.1) with different datasets (CIFAR-10 [<a class="ref-link" href="https://www.cs.toronto.edu/~kriz/cifar.html">13</a>] and Argoverse-HD [<a class="ref-link" href="https://www.cs.cmu.edu/~mengtial/proj/streaming/">12</a>]). We also measured V100 under the old setting to get a performance ratio between the two.
           </p>
           <p class="no-indent mt-3">The code is open-sourced on
             <a href="https://github.com/mtli/DLGPUBench">
               <img src="../[img]/GitHub-Mark-64px.png" style="width:25px">
-            </a>
+            </a>. Also that's where you can find the changelog of this benchmark.
           </p>
         </section>
         <section>
