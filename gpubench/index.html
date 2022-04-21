@@ -128,11 +128,11 @@
                 <b>Simple tasks:</b> we choose ImageNet classification with ResNet-50 as the representative simple task [<a class="ref-link" href="https://arxiv.org/abs/1512.03385">8</a>]. The model uses only standard operations, there are no postprocessing steps, and all tensors remain fixed sizes throughout the network.
               </li>
               <li>
-                <b>Complex tasks:</b> we choose MS COCO object detection with Faster R-CNN (FPN) to be the representative complex task[<a class="ref-link" href="https://arxiv.org/abs/1506.01497">9</a>,<a class="ref-link" href="https://arxiv.org/abs/1612.03144">10</a>]. The model uses non-standard operations like RoIAlign and non-maximum suppression (NMS). The tensor size varies depending on the outcome of NMS in the first stage.
+                <b>Complex tasks:</b> we choose MS COCO object detection with Faster R-CNN (FPN) to be the representative complex task [<a class="ref-link" href="https://arxiv.org/abs/1506.01497">9</a>,<a class="ref-link" href="https://arxiv.org/abs/1612.03144">10</a>]. The model uses non-standard operations like RoIAlign and non-maximum suppression (NMS). The tensor size varies depending on the outcome of NMS in the first stage.
               </li>
             </ul>
             <p>
-              <b>Batch size:</b> For ImageNet classification, we use the default batch size for both training and inference, which is 64 per GPU. We have also tried (in version 1.0) to use a batch size 1 but found such a small workload tend to produce noisy measurements as other system factors come into play. For complex tasks MS COCO object detection, we use batch size 1 for inference to be consistent with the standard evaluation, and use the default batch size 2 per GPU for training.
+              <b>Batch size:</b> For ImageNet classification, we use the default batch size for both training and inference, which is 64 per GPU. We have also tried (in version 1.0) to use batch size 1 but found such a small workload tends to produce noisy measurements when other system factors come into play. For MS COCO object detection, we use batch size 1 for inference, which is consistent with the standard evaluation, and use the default batch size 2 per GPU for training.
             </p>
           </p>
 
