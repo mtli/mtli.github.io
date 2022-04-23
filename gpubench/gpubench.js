@@ -32,9 +32,9 @@ class GPUBench {
       hAxis: {
         title: 'Relative Performance Compared to V100',
         titleTextStyle: {italic: false},
-        // viewWindow: {min: 0.2},
         // minValue: 0.2,
-        maxValue: 2.25,
+        // maxValue: 2.25,
+        viewWindow: {max: 2.25},
       },
       legend: {position: 'none'},
       animation:{
