@@ -1,0 +1,63 @@
+body {
+	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+	font-size: 125%;
+	padding-bottom: 3em;
+}
+
+.navbar {
+    padding: .1rem 1rem;
+}
+
+.author {
+	font-weight: 400;
+	margin-bottom: 0;
+}
+
+.institution {
+	font-size: 95%;
+	font-weight: 400;
+}
+
+.enlarge {
+	font-size: 100%;
+}
+
+.code {
+	color: #CC2B22;
+}
+
+.indent {
+	 text-indent: 2em;
+}
+
+.spotlight {
+	color: rgb(171, 37, 14);
+}
+
+.news {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.news td:first-child {
+	font-weight: bold;
+	min-width: 5em;
+	vertical-align: top;
+}
+
+.icon-row a {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.img-btn:hover {
+	text-decoration: none;
+}
+
+.img-btn img {
+	transition: all .2s ease-in-out;
+}
+
+.img-btn img:hover {
+	transform: scale(1.2);
+}
