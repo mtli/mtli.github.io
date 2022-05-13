@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Online viewer for the contour drawing dataset">
+  <meta name="author" content="Mengtian (Martin) Li">
+	
+  <title>Contour Drawing Dataset</title>
+
+  <link rel="stylesheet" href="dataset-viewer.css">
+  <script src="dataset-viewer.js"></script>
+</head>
+
+<body>
+<section id="inputpage" class="inputpage">
+	<div style="text-align: center">
+		<h1>Sketch Dataset Viewer</h1>
+		<img src="sketch/00000504_01.svg" style="margin-bottom: -50px; overflow: hidden">
+	</div>
+	<ul>
+		<li>
+			<p><strong>Random samples:</strong></p>
+			<button onClick="randList(10);">Random 10</button>
+			<button onClick="randList(50);">Random 50</button>
+			<button onClick="randList(100);">Random 100</button>
+		</li><br>
+		<li>
+			<p><strong>Range (from 1-1000):</strong></p>
+			<form name="range" onSubmit="return rangeList();">
+				<label>Start</label>
+				<input name="start" type="number" value="1" style="width:4em">
+				<label style="margin-left: 1em">End</label>
+				<input name="end" type="number" value="100" style="width:4em;">
+				<input type="submit" value="View" style="margin-left: 0.5em">
+				<p>Note: it is not advised to view more than 100 images at a time (depending on the system specs).</p>
+			</form>
+		</li><br>
+		<li>
+			<p><strong>List (comma seperated):</strong></p>
+			<form name="listform" onSubmit="return inputList();">
+				<input name="list" type="text" value="124, 267, 739, 605" style="width:500px">
+				<input type="submit" value="View" style="margin-left: 0.5em">
+			</form>
+		</li>
+	</ul>
+</section>
+</body>
+</html>

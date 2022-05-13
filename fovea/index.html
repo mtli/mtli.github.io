@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project Page For FOVEA">
+  <meta name="author" content="Mengtian (Martin) Li">
+
+  <title>FOVEA: Foveated Image Magnification for Autonomous Navigation</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="fovea.css?v=0.1">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- CDN for access in China -->
+  <script>
+    if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.slim.min.js'%3E%3C/script%3E"));
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</head>
+  
+<body>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h1 class="title mt-5" style="font-size: 180%">FOVEA: Foveated Image Magnification for Autonomous Navigation</h1>
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="row author-group">
+      <div class="col-md-2"></div>
+      <div class="col-md-4 text-center">
+        <!-- <a href="/" style="color: black; text-decoration: none"> -->
+          <p class="author">Chittesh Thavamani*</p>
+        <!-- </a> -->
+        <p class="institution" style="padding-top:0.5em">Carnegie Mellon University</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="/" style="color: black; text-decoration: none">
+          <p class="author">Mengtian (Martin) Li*</p>
+        </a>
+        <p class="institution" style="padding-top:0.5em">Carnegie Mellon University</p>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-2"></div>
+      <div class="col-md-4 text-center">
+        <a href="https://www.linkedin.com/in/nicolas-cebron" style="color: black; text-decoration: none">
+          <p class="author">Nicolas Cebron</p>
+        </a>
+        <p class="institution">Argo AI</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="https://www.cs.cmu.edu/~deva/" style="color: black; text-decoration: none">
+          <p class="author">Deva Ramanan</p>
+        </a>
+        <p class="institution">Carnegie Mellon University <br> Argo AI</p>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+  
+  <div class="row my-4">
+    <div class="col-md-12 text-center">
+      <img src="img/fovea-teaser.jpg?v=0.3" style="width:100%; max-width:700px">
+    </div>
+  </div>
+  
+  <div class="row mt-5 mb-4">
+		<div class="col-sm-4">
+		  <video style="width:100%; max-width:1920px" controls autoplay muted loop>
+			  <source src="vid/demo1.mp4" type="video/mp4">
+		  </video>
+		</div>
+    <div class="col-sm-4">
+		  <video style="width:100%; max-width:1920px" controls autoplay muted loop>
+			  <source src="vid/demo2.mp4" type="video/mp4">
+		  </video>
+		</div>
+    <div class="col-sm-4">
+		  <video style="width:100%; max-width:1920px" controls autoplay muted loop>
+			  <source src="vid/demo3.mp4" type="video/mp4">
+		  </video>
+		</div>
+  </div>
+
+  <hr class="my-0">
+  
+  <div class="row my-4">
+    <div class="col text-left">
+      <h2 class="mb-4">Abstract</h2>
+      <p class="text-left indent">
+        Efficient processing of high-res video streams is safety-critical for many robotics applications such as autonomous driving. To maintain real-time performance, many practical systems downsample the video stream. But this can hurt downstream tasks such as (small) object detection. Instead, we take inspiration from biological vision systems that allocate more foveal "pixels" to salient parts of the scene. We introduce FOVEA, an approach for intelligent downsampling that ensures salient image regions remain "magnified" in the downsampled output. Given a high-res image, FOVEA applies a differentiable resampling layer that outputs a small fixed-size image canvas, which is then processed with a differentiable vision module (e.g., object detection network), whose output is then differentiably backward mapped onto the original image size. The key idea is to resample such that background pixels can make room for salient pixels of interest. In order to ensure the overall pipeline remains efficient, FOVEA makes use of cheap and readily available cues for saliency, including dataset-specific spatial priors or temporal priors computed from object predictions in the recent past. On the autonomous driving datasets Argoverse-HD and BDD100K, our proposed method boosts the detection AP over standard Faster R-CNN, both with and without finetuning. Without any noticeable increase in compute, we improve accuracy on small objects by over 2x without degrading performance on large objects. Finally, FOVEA sets a new record for streaming AP (from 17.8 to 23.0 on a GTX 1080 Ti GPU), a metric designed to capture both accuracy and latency.      </p>
+    </div>
+  </div>
+  
+  <hr class="my-4">
+  
+  <div class="row mt-4">
+    <div class="col text-left">
+      <h2 class="mb-4">Talk</h2>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col text-center" style="max-width:1000px; margin:0 auto">
+      <div class="embed-responsive embed-responsive-16by9 img-shadow">
+        <iframe class="embed-responsive-item"
+          src="https://www.youtube.com/embed/PWe6CDeXJ7k"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+          allowfullscreen>
+        </iframe> 
+      </div>
+    </div>
+  </div>
+
+  <hr class="mt-5 mb-4">
+
+  <div class="row my-4">
+    <div class="col-md-2" ></div>
+    <div class="col-md-3 text-center">
+      <a target="_blank" href="https://arxiv.org/abs/2108.12102">
+      <!-- <a target="_blank" href="Thavamani, Chittesh - ICCV 2021 - FOVEA.pdf"> -->
+        <img class="layered-paper-big" style="height:175px" src="img/fovea-paper.png">
+      </a>
+    </div>
+    <div class="col-md-6">
+      <p>C. Thavamani, M. Li, N. Cebron and D. Ramanan<br>
+        <em>FOVEA: Foveated Image Magnification for Autonomous Navigation</em><br>
+        In ICCV, 2021.<br>
+      </p>
+      <p>
+        <a target="_blank" href="https://arxiv.org/abs/2108.12102">[Paper]</a>
+        <a target="_blank" href="http://www.cs.cmu.edu/~mengtial/proj/fovea/FOVEA%20-%20Poster.pdf">[Poster]</a>
+        <a target="_blank" href="https://github.com/tchittesh/FOVEA">[Code]</a>
+        <a target="_blank" href="../[bibtex]/fovea.bib">[Bibtex]</a>
+      </p>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <div style="height: 1rem"></div>
+  <div class="row my-5">
+    <div class="col">
+      <p class="text-left">
+        <b>Acknowledgements</b>: this work was supported by the
+        <a target="_blank" href="https://labs.ri.cmu.edu/argo-ai-center/">
+          CMU Argo AI Center for Autonomous Vehicle Research</a>.
+      </p>
+    </div>
+  </div>
+
+  
+</div>
+<footer class="text-center mt-3">
+  <p>Ⓒ  &nbsp; 2021 &nbsp; Mengtian (Martin) Li &nbsp;</p>
+  <p><a href="/">Homepage of Martin Li</a></p>
+</footer>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71310278-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-71310278-2');
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project Page For Budgeted Training: Rethinking Deep Neural Network Training Under Resource Constraints">
+  <meta name="author" content="Mengtian (Martin) Li">
+
+  <title>Budgeted Training</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="budgetnn.css">
+</head>
+	
+<body>
+<div class="container">
+  <div class="row mb-4">
+		<div class="col-md-12 text-center">
+    	<h1 class="title mt-5">Budgeted Training: Rethinking Deep Neural Network Training <br> Under Resource Constraints</h1>
+		</div>
+	</div>
+	<div class="mb-3">
+		<div class="row author-group">
+			<div class="col-md-4 text-center">
+				<a href="/" style="color: black; text-decoration: none">
+					<p class="author">Mengtian (Martin) Li</p>
+				</a>
+				<p class="institution">Carnegie Mellon University</p>
+			</div>
+			<div class="col-md-3 text-center">
+				<a href="http://www.meyumer.com/" style="color: black; text-decoration: none">
+					<p class="author">Ersin Yumer</p>
+				</a>
+				<p class="institution">Uber ATG</p>
+			</div>
+			<div class="col-md-5 text-center">
+				<a href="https://www.cs.cmu.edu/~deva/" style="color: black; text-decoration: none">
+					<p class="author">Deva Ramanan</p>
+				</a>
+				<p class="institution">Carnegie Mellon University &amp; Argo AI</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row mb-5">
+		<div class="col-md-12 text-center">
+			<img src="img/budget-fg1-upper.png" style="width:100%; max-width:700px">
+		</div>
+	</div>
+	
+	<hr class="my-0">
+	
+	<div class="row my-4">
+		<div class="col-md-12 text-left">
+    	<h2 class="mb-4">Abstract</h2>
+			<p class="text-left indent">
+				In most practical settings and theoretical analyses, one assumes that a model can be trained until convergence.
+				However, the growing complexity of machine learning datasets and models may violate such assumptions.
+				Indeed, current approaches for hyper-parameter tuning and neural architecture search tend to be limited by practical resource constraints.
+				Therefore, we introduce a formal setting for studying training under the non-asymptotic, resource-constrained regime, i.e., budgeted training.
+				We analyze the following problem: "given a dataset, algorithm, and fixed resource budget, what is the best achievable performance?"
+				We focus on the number of optimization iterations as the representative resource.
+				Under such a setting, we show that it is critical to adjust the learning rate schedule according to the given budget.
+				Among budget-aware learning schedules, we find simple linear decay to be both robust and high-performing.
+				We support our claim through extensive experiments with state-of-the-art models on
+				ImageNet (image classification), Kinetics (video classification), MS COCO (object detection and instance segmentation), and Cityscapes (semantic segmentation).
+				We also analyze our results and find that the key to a good schedule is budgeted convergence,
+				a phenomenon whereby the gradient vanishes at the end of each allowed budget.
+				We also revisit existing approaches for fast convergence and show that budget-aware learning schedules readily outperform such approaches under
+				(the practical but under-explored) budgeted training setting.</p>
+		</div>
+	</div>
+	
+	<hr class="mt-0 mb-4">
+	
+	<div class="row my-4">
+		<div class="col-md-2" ></div>
+		<div class="col-md-3 text-center">
+			<a href="https://arxiv.org/abs/1905.04753"><img class="layered-paper-big" style="height:175px" src="img/budget-paper.png"></a>
+		</div>
+		<!-- <div class="col-sm-1"></div> -->
+		<div class="col-md-6">
+			<p>M. Li, E. Yumer and D. Ramanan<br>
+				<em>Budgeted Training: Rethinking Deep Neural Network Training Under Resource Constraints</em><br>
+				In ICLR, 2020.<br>
+			</p>
+			<p>
+				<a href="https://arxiv.org/abs/1905.04753">[Paper]</a>
+				<a href="https://youtu.be/x15o1JwTh5k">[Talk]</a>
+				<a href="https://github.com/mtli/linearlr">[Code]</a>
+				<a href="../[bibtex]/budget.bib">[Bibtex]</a>
+			</p>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+
+	<div style="height: 1rem"></div>
+	<div class="row my-5">
+		<div class="col">
+			<p class="text-left">
+				<b>Acknowledgements</b>: this work was supported by the
+				<a target="_blank" href="https://labs.ri.cmu.edu/argo-ai-center/">
+					CMU Argo AI Center for Autonomous Vehicle Research</a>
+					and was supported by the Defense Advanced Research Projects Agency (DARPA) under Contract No. HR001117C0051.
+			</p>
+		</div>
+	</div>
+
+	
+</div>
+<footer class="text-center mt-3">
+  <p>Ⓒ  &nbsp; 2020 &nbsp; Mengtian (Martin) Li &nbsp;</p>
+  <p><a href="/">Homepage of Martin Li</a></p>
+</footer>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71310278-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-71310278-2');
+</script>
+</body>
+</html>
+	

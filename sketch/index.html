@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project page for Photo-Sketching: Inferring Contour Drawings from Images">
+  <meta name="author" content="Mengtian (Martin) Li">
+	
+  <title>Photo-Sketching</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+  <!-- CDN for access in China -->
+  <script>
+    if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js'%3E%3C/script%3E"));
+    }
+  </script>
+  <script src="jquery.drawsvg.min.js" integrity="sha384-OLzN5AedK8E5s0uGHtMimQjbyohtQgFghNwdKNsnyJVVa9WQzRpoCQxVdn9rDbzR"></script>
+  <link rel="stylesheet" href="sketch.css">
+  <script src="sketch.js"></script>
+</head>
+	
+<body>
+<div class="container">
+  <div class="row mb-4">
+		<div class="col-md-12 text-center">
+    	<h1 class="title mt-5">Photo-Sketching: <br> Inferring Contour Drawings from Images</h1>
+		</div>
+	</div>
+	<div class="mb-3">
+		<div class="row author-group">
+			<div class="col-md-4 text-center">
+				<a href="/" style="color: black; text-decoration: none">
+					<p class="author">Mengtian (Martin) Li</p>
+				</a>
+				<p class="institution">Carnegie Mellon University</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<a href="https://research.adobe.com/person/zhe-lin/" style="color: black; text-decoration: none">
+					<p class="author">Zhe Lin</p>
+				</a>
+				<p class="institution">Adobe Research</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<a href="https://research.adobe.com/person/radomir-mech/" style="color: black; text-decoration: none">
+					<p class="author">Radomír Měch</p>
+				</a>
+				<p class="institution">Adobe Research</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 text-center"></div>
+			<div class="col-md-4 text-center">
+				<a href="http://www.meyumer.com/" style="color: black; text-decoration: none">
+					<p class="author">Ersin Yumer</p>
+				</a>
+				<p class="institution">Uber ATG</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<a href="https://www.cs.cmu.edu/~deva/" style="color: black; text-decoration: none">
+					<p class="author">Deva Ramanan</p>
+				</a>
+				<p class="institution">Carnegie Mellon University &amp; Argo AI</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row mb-5">
+		<div class="col-md-12 text-center">
+			<img src="img/Wild-half.jpg" style="width:100%; max-width:1200px">
+		</div>
+	</div>
+	
+	<hr class="my-0">
+	
+	<div class="row my-4">
+		<div class="col-md-12 text-left">
+    	<h2 class="mb-4">Abstract</h2>
+			<p class="text-left indent">Edges, boundaries and contours are important subjects of study in both computer graphics and computer vision. On one hand, they are the 2D elements that convey 3D shapes, on the other hand, they are indicative of occlusion events and thus separation of objects or semantic concepts. In this paper, we aim to generate contour drawings, boundary-like drawings that capture the outline of the visual scene. Prior art often cast this problem as boundary detection. However, the set of visual cues presented in the boundary detection output are different from the ones in contour drawings, and also the artistic style is ignored. We address these issues by collecting a new dataset of contour drawings and proposing a learning-based method that resolves diversity in the annotation and, unlike boundary detectors, can work with imperfect alignment of the annotation and the actual ground truth. Our method surpasses previous methods quantitatively and qualitatively. Surprisingly, when our model fine-tunes on BSDS500, we achieve the state-of-the-art performance in salient boundary detection, suggesting contour drawing might be a scalable alternative to boundary annotation, which at the same time is easier and more interesting for annotators to draw.</p>
+		</div>
+	</div>
+	
+	<hr class="mt-0 mb-4">
+	
+	<div class="row my-4">
+		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<a href="https://arxiv.org/abs/1901.00542"><img class="layered-paper-big" style="height:175px" src="img/sketch_paper_p1.png"></a>
+		</div>
+		<div class="col-md-1"></div>
+		<div class="col-md-6">
+			<p>M. Li, Z. Lin, R. Měch, E. Yumer and D. Ramanan<br>
+				<em>Photo-Sketching: Inferring Contour Drawings from Images</em><br>
+				In WACV, 2019.<br>
+			</p>
+			<p>
+				<a href="https://arxiv.org/abs/1901.00542">[Paper]</a>
+				<a href="https://github.com/mtli/PhotoSketch">[Code]</a>
+				<a href="../[bibtex]/sketch.bib">[Bibtex]</a>
+			</p>
+			<p>See below for our contour drawing dataset.</p>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	
+	<hr class="mt-4 mb-4">
+	
+	<div class="row mb-3">
+	<div class="col-md-12 text-left">
+    	<h2>Contour Drawing Dataset</h2>
+	</div>
+	</div>
+	
+	<div class="row">
+		<div id="sketchcanvas" class="col-md-12">
+		</div>
+	</div>
+	
+	<div class="row mt-4">
+		<div class="col-md-12 text-center">
+			<button type="button" id="replay" class="btn btn-secondary mr-1 enlarge">Replay Current Set</button>
+			<button type="button" id="next-random" class="btn btn-secondary ml-1 enlarge">Play Next Random Set</button>
+		</div>
+	</div>
+	
+	<hr class="mt-4 mb-2">
+	<div class="row">
+		<div class="col-md-12">
+			<p>We present a new dataset of paired images and contour drawings for the study of visual understanding and sketch generation. In this dataset, there are 1,000 outdoor images and each is paired with 5 human drawings (5,000 drawings in total). The drawings have strokes roughly aligned for image boundaries, making it easier to correspond human strokes with image edges.</p>
+
+			<p>The dataset is collected with Amazon Mechanical Turk. The Turkers are asked to trace over a fainted background image. In order to obtain high-quality annotations, we design a labeling interface with a detailed instruction page including many positive and negative examples. The quality control is realized through manual inspection by treating annotations of the following types as rejection candidates: (1) missing inner boundary, (2) missing important objects, (3) with large misalignment with original edges, (4) the content not recognizable, (5) drawing humans with stick figures, (6) shaded on empty areas. Therefore, in addition to the 5,000 drawings accepted, we have 1,947 rejected submissions, which can be used in setting up an automatic quality guard.</p>
+
+			<p><b>License</b>: the dataset is licensed under CC BY-NC-SA (Attribution-NonCommercial-ShareAlike). That means you can use this dataset for non-commerical purposes and your adapted work should be shared under similar conditions.</p>
+
+			<p><a target="_blank" href="dataset-viewer.html">Online Viewer</a></p>
+			
+			<p class="mb-0"><b>Downloads</b>:</p>
+
+			<ul class="list-group pl-4">
+				<il><a target="_blank" href="https://drive.google.com/file/d/1PSTAeVUE0_hoS1hpQT2HbbyXpq8JU4sH/view">image (downloader, 115KB)</a></il>
+				<il><a target="_blank" href="https://drive.google.com/file/d/1wKY0W4G8s9tDWToMdSoDiKzRpOKvrUAc/view">original sketch in svg, which contains stroke timestamps (177MB)</a></il>
+				<il><a target="_blank" href="https://drive.google.com/file/d/1tMUaNIEIio7JmbTz_AQ8j86GjRwoHNZc/view">rendered sketch in png (143MB)</a></il>
+				<il><a target="_blank" href="https://drive.google.com/file/d/1wsaezBeXj0WaR8dZb9vVjERNoU9JRO8F/view">dataset split (2KB)</a></il>
+				<il><a target="_blank" href="https://drive.google.com/file/d/1_AIxKnZXQms5Ezb-cEeVIDIoVG-eliHc/view">all-in-one (320MB)</a></il>
+				<br>
+				<il><a target="_blank" href="https://drive.google.com/file/d/1XkZQNQfbObc8vBVWTiIMJVW-jtz-fHqI/view">rejected sketch and its rendered version (95MB)</a></il>
+				<il><a target="_blank" href="https://drive.google.com/file/d/11Z0SyGpDkGxdbnC6nC46T3PXHRRf5dib/view">concensus sketch used for evaluation (15MB)</a></il>
+			</ul>
+		</div>
+	</div>
+	
+	<hr class="mt-5 mb-4">
+	
+	<div class="row mb-3">
+		<div class="col-md-12 text-left">
+			<h2>Sketch Game</h2>
+		</div>
+	</div>
+	
+	<div class="row mb-3">
+		<div class="col-md-12">
+			<p>We demostrate a gaming interface for collecting large scale sketch dataset. This is inspired by the comments in the initial data collection phase, which state that making such drawings is an enjoyable process. Unlike boundary detection annotation, we only require a rough edge alignment and thus the task is much easier. This game will reward players when their strokes match some image edges and penalize otherwise. As a result, it encourages players to make high-quality drawings.</p>
+		</div>
+	</div>
+	
+	<div class="row mb-5">
+		<div class="col-md-12 text-center">
+			<div class='embed-container'><iframe src='https://www.youtube.com/embed/7qLQZjWQCs4' frameborder='0' allowfullscreen></iframe></div>
+		</div>
+	</div>
+		
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<a rel="license" style="text-decoration: none" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+				<img alt="Creative Commons License" style="border-width: 0; margin-bottom: 0.5em" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png">
+			</a>
+		</div>
+	</div>
+</div>
+<footer class="text-center mt-3">
+  <p>Ⓒ  &nbsp; 2019 &nbsp; Mengtian (Martin) Li &nbsp;</p>
+  <p><a href="/">Homepage of Martin Li</a></p>
+</footer>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71310278-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-71310278-2');
+</script>
+</body>
+</html>
+	

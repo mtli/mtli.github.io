@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project Page For Towards Streaming Perception">
+  <meta name="author" content="Mengtian (Martin) Li">
+  
+  <title>Streaming Perception</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="streaming.css?v=0.2">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- CDN for access in China -->
+  <script>
+    if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.slim.min.js'%3E%3C/script%3E"));
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</head>
+  
+<body>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h1 class="title mt-5">Towards Streaming Perception</h1>
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="row author-group">
+      <div class="col-md-4 text-center">
+        <a href="/" style="color: black; text-decoration: none">
+          <p class="author">Mengtian (Martin) Li</p>
+        </a>
+        <p class="institution" style="padding-top:0.5em">Carnegie Mellon University</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="https://www.ri.cmu.edu/ri-people/yuxiong-wang/" style="color: black; text-decoration: none">
+          <p class="author">Yu-Xiong Wang</p>
+        </a>
+        <p class="institution">Carnegie Mellon University <br> UIUC </p>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="https://www.cs.cmu.edu/~deva/" style="color: black; text-decoration: none">
+          <p class="author">Deva Ramanan</p>
+        </a>
+        <p class="institution">Carnegie Mellon University <br> Argo AI</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mb-5">
+    <div class="col-md-12 text-center">
+      <a target="_blank" href="https://www.cs.cmu.edu/~mengtial/proj/streaming/vid/Viz Compare.mp4?v=0.1">
+        <img src="img/streaming-long.jpg" style="width:100%; max-width:600px">
+      </a>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col text-center">
+      <p>(Formerly titled "Towards Streaming Image Understanding")</p>
+    </div>
+  </div>
+  <hr class="my-0">
+  
+  <div class="row my-4">
+    <div class="col text-left">
+      <h2 class="mb-4">Abstract</h2>
+      <p class="text-left indent">
+        Embodied perception refers to the ability of an autonomous agent to perceive its environment so that it can (re)act. The responsiveness of the agent is largely governed by latency of its processing pipeline. While past work has studied the algorithmic trade-off between latency and accuracy, there has not been a clear metric to compare different methods along the Pareto optimal latency-accuracy curve. We point out a discrepancy between standard offline evaluation and real-time applications: by the time an algorithm finishes processing a particular frame, the surrounding world has changed. To these ends, we present an approach that coherently integrates latency and accuracy into a single metric for real-time online perception, which we refer to as "streaming accuracy". The key insight behind this metric is to jointly evaluate the output of the entire perception stack at every time instant, forcing the stack to consider the amount of streaming data that should be ignored while computation is occurring. More broadly, building upon this metric, we introduce a meta-benchmark that systematically converts any single-frame task into a streaming perception task. We focus on the illustrative tasks of object detection and instance segmentation in urban video streams, and contribute a novel dataset with high-quality and temporally-dense annotations. Our proposed solutions and their empirical analysis demonstrate a number of surprising conclusions: (1) there exists an optimal "sweet spot" that maximizes streaming accuracy along the Pareto optimal latency-accuracy curve, (2) asynchronous tracking and future forecasting naturally emerge as internal representations that enable streaming perception, and (3) dynamic scheduling can be used to overcome temporal aliasing, yielding the paradoxical result that latency is sometimes minimized by sitting idle and "doing nothing".
+      </p>
+    </div>
+  </div>
+  
+  <hr class="mt-0 mb-4">
+  
+  <div class="row mt-4">
+    <div class="col text-left">
+      <h2 class="mb-4">Talk</h2>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col text-center" style="max-width:1000px; margin:0 auto">
+      <ul class="spcustom nav nav-tabs mb-1" id="videoTab" role="tablist">
+        <li class="nav-item">
+          <a class="spcustom nav-link active" id="long-tab" data-toggle="tab" href="#long" role="tab" aria-controls="long" aria-selected="true">
+            Talk (10min)
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="spcustom nav-link" id="short-tab" data-toggle="tab" href="#short" role="tab" aria-controls="short" aria-selected="false">
+            Short Talk (2min)
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="videoTabContent">
+        <div class="tab-pane fade show active" id="long" role="tabpanel" aria-labelledby="long-tab">
+          <video style="width:100%; max-width:1000px" controls>
+            <source src="https://www.cs.cmu.edu/~mengtial/proj/streaming/vid/Streaming Preception - 10min - v7.1.mp4" type="video/mp4">
+          </video>
+          <div class="row my-3">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4 col-md-6">
+              <p>Watch on Youtube 
+                <a target="_blank" href="https://youtu.be/x6AJnk2ph00">
+                  <img src="../[img]/youtube_social_icon_red_128x90.png" style="height: 1.35em; margin-left: 0.5em; vertical-align: middle">
+                </a>
+              </p>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <p>Watch on Bilibili
+                <a target="_blank" href="https://www.bilibili.com/video/bv1rD4y127EM">
+                  <img src="../[img]/Bilibili_padded_86x90.png" style="height: 1.5em; margin-left: 0.5em; vertical-align: middle">
+                </a>
+              </p>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="short" role="tabpanel" aria-labelledby="short-tab">
+          <video style="width:100%; max-width:1000px" controls>
+            <source src="https://www.cs.cmu.edu/~mengtial/proj/streaming/vid/Streaming Preception - 2min - v4.mp4" type="video/mp4">
+          </video>
+          <div class="row my-3">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4 col-md-6">
+              <p>Watch on Youtube 
+                <a target="_blank" href="https://youtu.be/RAnkElDBhQo">
+                  <img src="../[img]/youtube_social_icon_red_128x90.png" style="height: 1.35em; margin-left: 0.5em; vertical-align: middle">
+                </a>
+              </p>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <p>Watch on Bilibili
+                <a target="_blank" href="https://www.bilibili.com/video/BV1qD4y127f6/">
+                  <img src="../[img]/Bilibili_padded_86x90.png" style="height: 1.5em; margin-left: 0.5em; vertical-align: middle">
+                </a>
+              </p>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <hr class="mt-0 mb-4">
+
+  <div class="row my-4">
+    <div class="col-md-2" ></div>
+    <div class="col-md-3 text-center">
+      <a target="_blank" href="https://arxiv.org/abs/2005.10420">
+      <!-- <a target="_blank" href="Martin - Streaming Perception.pdf?v=0.1"> -->
+        <img class="layered-paper-big" style="height:175px" src="img/streaming-paper.png"></a>
+    </div>
+    <div class="col-md-6">
+      <p>M. Li, Y. Wang and D. Ramanan<br>
+        <em>Towards Streaming Perception</em><br>
+        In ECCV, 2020.<br>
+      </p>
+      <p class="spotlight">Best Paper Honorable Mention</p>
+      <p>
+        <a target="_blank" href="https://arxiv.org/abs/2005.10420">[Paper]</a>
+        <!-- <a target="_blank" href="Martin - Streaming Perception.pdf?v=0.1">[Paper]</a> -->
+        <a target="_blank" href="https://github.com/mtli/sAP">[Code]</a>
+        <a target="_blank" href="../[bibtex]/streaming.bib">[Bibtex]</a>
+      </p>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col text-left">
+      <p>Qualitative results can be found in <a href="streaming-visuals.html">A Visual Walkthrough of Streaming Perception Solutions</a>.</p>
+    </div>
+  </div>
+
+
+  <hr class="mt-0 mb-4">
+
+  <div class="row mt-4">
+    <div class="col text-left">
+      <h2 class="mb-4" id="dataset">Dataset &mdash; Argoverse-HD</h2>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col text-center">
+      <img src="img/dataset-compare.png?v=0.3" style="width:100%; max-width:800px">
+    </div>
+  </div>
+  <div class="row mt-3 mb-1">
+    <div class="col text-center">
+      <div style="font-size: 1.05em">
+        Online Viewers: 
+        <a target="_blank" href="https://www.cs.cmu.edu/~mengtial/proj/streaming/dataset/viewer/train.html">[Train]</a>
+        <a target="_blank" href="https://www.cs.cmu.edu/~mengtial/proj/streaming/dataset/viewer/val.html">[Val]</a>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col text-left">
+      <p class="indent">
+        Based upon the autonomous driving dataset <a target="_blank" href="https://www.argoverse.org/av1.html">Argoverse 1.1</a>,
+        we build our dataset with high-frame-rate annotations for streaming evaluation that we name <b>Argoverse-HD</b> (High-frame-rate Detection).
+        Despite being created for streaming evaluation, Argoverse-HD can also be used for study on
+        <i>image/video object detection, multi-object tracking, and forecasting</i>.
+        One key feature is that our annotations follow
+        <a target="_blank" href="https://cocodataset.org/#home">MS COCO</a> standards,
+        thus allowing direct evaluation of COCO pre-trained models on this autonomous driving dataset.
+        Since this dataset is primarily intended for evaluation,
+        <del>we only annotated the validation set</del> (see below),
+        but provide pseudo ground truth of the training set.
+        We find that pseudo ground truth could be used to self-supervise the training of streaming algorithms.
+        Additional details about the dataset itself can be found in Section 4.1 & A.4 of the paper.
+        Additional details about pseudo ground truth can be found in Section 3.4 & A.2 of the paper.
+      </p>
+      <p class="indent">
+        <b>Updated Mar 2021:
+        we now have all train, val and test splits annotated for the streaming perception challenge!</b>
+        Previously, only the annotations for the val split is provided.
+        The test split annotations will be held out for ranking submissions on the challenge leaderboard.
+        The table above contains updated number for the size of our dataset
+        (updated to 1.26M from 250K for the number of boxes in Table B of the paper).
+      </p>
+
+      <p class="indent">
+        We provide the download links to our dataset below. Our dataset is released under the MIT License.
+        However, if you use the images from Argoverse, you should check out their 
+        <a target="_blank" href="https://www.argoverse.org/about.html#terms-of-use">terms of use</a>.
+        The annotations and pseudo ground truth are provided in COCO format with additional metadata, 
+        which means that they work directly with <a target="_blank" href="https://github.com/cocodataset/cocoapi">cocoapi</a>.
+        You can refer to our <a target="_blank" href="https://github.com/mtli/sAP">code</a> for how to set up the image data and parse the annotations.
+      </p>
+
+      <p>
+        <ul class="list-group indent">
+          <il><a target="_blank" href="https://argoverse-hd.s3.us-east-2.amazonaws.com/Argoverse-HD-Full.zip">Full dataset (29GB on Amazon S3, North America)</a></il>
+          <il><a target="_blank" href="https://argoverse-hd-hk.s3.ap-east-1.amazonaws.com/Argoverse-HD-Full.zip">Full dataset (29GB on Amazon S3, Asia Pacific)</a></il>
+          <il><a target="_blank" href="https://www.kaggle.com/mtlics/argoversehd">Full dataset (29GB on Kaggle)</a></il>
+          <il><a target="_blank" href="https://www.cs.cmu.edu/~mengtial/proj/streaming/dataset/Argoverse-HD.zip?v=1.1">Annotations only (17MB)</a></il>
+          <il><a target="_blank" href="https://www.cs.cmu.edu/~mengtial/proj/streaming/dataset/Argoverse-HD_pickup_truck?v=0.1">Additional annotations with pickup truck labels* (17MB)</a></il>
+          <il class="faint"><a target="_blank" href="https://www.cs.cmu.edu/~mengtial/proj/streaming/dataset/Argoverse-HD_pseudo_train.zip?v=0.1">Legacy pseudo ground truth with instance masks (66MB)</a></il>
+          <il><a target="_blank" href="https://eval.ai/web/challenges/challenge-page/800/evaluation">AWS AMI with the full dataset and the deep learning environment</a></il>
+        </ul>
+      </p>
+
+      <p class="indent">
+        <span style='font-size: smaller'>
+          *By default COCO classifies "pickup truck" as "truck",
+          while appearance-wise, many "pickup trucks" resembles sedans,
+          which are classified as "car" in COCO. These additional annotations,
+          not included in the full dataset downloads,
+          add one extra attribute of "is_pickup_truck" for each object.
+          If used properly, this attribute can help to mitigate the confusion
+          between "truck" and "car".
+        </span>
+      </p>
+
+      <p class="indent">
+        Note that our dataset only contains images from the center ring camera in Argoverse 1.1,
+        for data of LiDAR and other cameras, please check out
+        <a target="_blank" href="https://www.argoverse.org/av1.html#argoverse-11">
+          the Argoverse website</a>
+          (links listed under "Argoverse 3D Tracking v1.1")
+      </p>
+
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <div class="row mt-4">
+    <div class="col text-left">
+      <h2 class="mb-4" id="dataset">Workshop Challenge</h2>
+        We are proud to announce the
+        <a target="_blank" href="https://eval.ai/web/challenges/challenge-page/800/overview">
+          2021 Streaming Perception Challenge</a>!
+        This challenge is part of the
+        <a target="_blank" href="http://cvpr2021.wad.vision">
+          CVPR 2021 Workshop on Autonomous Driving (WAD)</a>
+        and the
+        <a target="_blank" href="https://www.argoverse.org/tasks.html">
+          Argoverse 2021 competition series</a>.
+    </div>
+  </div>
+
+  <div style="height: 1rem"></div>
+  <div class="row my-5">
+    <div class="col">
+      <p class="text-left">
+        <b>Acknowledgements</b>: this work was supported by the
+        <a target="_blank" href="https://labs.ri.cmu.edu/argo-ai-center/">
+          CMU Argo AI Center for Autonomous Vehicle Research</a>
+          and was supported by the Defense Advanced Research Projects Agency (DARPA) under Contract No. HR001117C0051,
+          and NSF Grant 1618903.
+          Annotations for Argoverse-HD were provided by Scale AI.
+      </p>
+    </div>
+  </div>
+
+  
+</div>
+<footer class="text-center mt-3">
+  <p>Ⓒ  &nbsp; 2021 &nbsp; Mengtian (Martin) Li &nbsp;</p>
+  <p><a href="/">Homepage of Martin Li</a></p>
+</footer>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71310278-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-71310278-2');
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Visual Results for Towards Streaming Image Understanding">
+  <meta name="author" content="Mengtian (Martin) Li">
+
+  <title>Streaming Perception (Visual Walkthrough)</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="streaming.css">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous"></script> 
+  <script src="../[js]/scroll.js"></script>
+</head>
+	
+<body>
+  <div class="container">
+    <div class="row mb-4">
+    <div class="col-md-12 text-center">
+    <h1 class="title mt-5">A Visual Walkthrough of Streaming Perception Solutions</h1>
+    <p><a href=".">Project Page</a></p>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col text-left">
+      <h2 class="mb-4">Quick Navigation</h2>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col text-left">
+      <ul>
+        <li><a class="js-scroll-trigger" href="#detect">Detectors only</a></li>
+        <li><a class="js-scroll-trigger" href="#forecast">Forecasting</a></li>
+        <li><a class="js-scroll-trigger" href="#compute">Single GPU vs Infinite GPUs (<i>Our Final Streaming Detection Solutions</i>)</a></li>
+        <li><a class="js-scroll-trigger" href="#instseg">Instance Segmentation</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+	<div class="row mt-4">
+		<div class="col text-left">
+			<h2 id="detect" class="mb-4">Detectors Only</h2>
+		</div>
+	</div>
+	<div class="row mb-4">
+		<div class="col text-center">
+		<video style="width:100%; max-width:900px" controls>
+			<source src="https://www.cs.cmu.edu/~mengtial/proj/streaming/vid/Detectors Only.mp4" type="video/mp4">
+		</video>
+		</div>
+	</div>
+
+  <hr>
+  <div class="row mt-4">
+		<div class="col text-left">
+			<h2 id="forecast" class="mb-4">Forecasting</h2>
+		</div>
+	</div>
+	<div class="row mb-4">
+		<div class="col text-center">
+		<video style="width:100%; max-width:900px" controls>
+			<source src="https://www.cs.cmu.edu/~mengtial/proj/streaming/vid/Forecasting.mp4" type="video/mp4">
+		</video>
+		</div>
+  </div>
+
+  <hr>
+  <div class="row mt-4">
+		<div class="col text-left">
+      <h2 id="compute" class="mb-4">Single GPU vs Infinite GPUs (<i>Our Final Streaming Detection Solutions</i>)</h2>
+		</div>
+	</div>
+	<div class="row mb-4">
+		<div class="col text-center">
+		<video style="width:100%; max-width:900px" controls>
+			<source src="https://www.cs.cmu.edu/~mengtial/proj/streaming/vid/Compute (Final Solutions).mp4" type="video/mp4">
+		</video>
+		</div>
+  </div>
+  
+  <hr>
+  <div class="row mt-4">
+		<div class="col text-left">
+      <h2 id="instseg" class="mb-4">Instance Segmentation</h2>
+		</div>
+	</div>
+	<div class="row mb-4">
+		<div class="col text-center">
+		<video style="width:100%; max-width:900px" controls>
+			<source src="https://www.cs.cmu.edu/~mengtial/proj/streaming/vid/Instance Segmentation.mp4" type="video/mp4">
+		</video>
+		</div>
+  </div>
+  
+
+  <hr class="my-2">
+	<div style="height: 1rem"></div>
+	<div class="row">
+		<div class="col">
+			<p class="text-left">
+				<a href="https://github.com/mtli/sAP/blob/master/doc/tasks.md#contrastive-visualization">
+					Scripts used to generate these videos</a>
+			</p>
+		</div>
+	</div>
+
+  <hr class="my-2">
+	<div style="height: 1rem"></div>
+	<div class="row mb-5">
+		<div class="col">
+			<p class="text-left">
+				<a href=".">
+					Back to project page</a>
+			</p>
+		</div>
+	</div>
+
+	
+</div>
+<footer class="text-center mt-3">
+  <p>Ⓒ  &nbsp; 2020 &nbsp; Mengtian (Martin) Li &nbsp;</p>
+  <p><a href="/">Homepage of Martin Li</a></p>
+</footer>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71310278-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-71310278-2');
+</script>
+</body>
+</html>
