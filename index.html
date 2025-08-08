@@ -14,15 +14,15 @@
   <!-- CDN for access in China -->
   <script>
     if (typeof jQuery == 'undefined') {
-        document.write(unescape("%3Cscript src='https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js'%3E%3C/script%3E"));
+      document.write(unescape("%3Cscript src='https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js'%3E%3C/script%3E"));
     }
   </script>
 
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous"></script> 
   <!-- CDN for access in China -->
   <script>
-    if (typeof jQuery.Animation == 'undefined') {
-        document.write(unescape("%3Cscript src='[js]/jquery-ui.min.js'%3E%3C/script%3E"));
+    if (typeof jQuery.Animation === 'undefined') {
+      document.write(unescape("%3Cscript src='[js]/jquery-ui.min.js'%3E%3C/script%3E"));
     }
   </script>
   
@@ -35,299 +35,271 @@
 
   <base target="_blank">
 </head>
-  
+
 <body data-spy="scroll" data-target=".navbar" data-offset="50" style="margin-top: 50px">
   
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">Martin Li</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Martin Li</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#home">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#papers">Papers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#misc">Misc</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-  
-<div id="home" class="container h-100 px-4">
-  <div class="row justify-content-md-center py-4">
-    <div class="col-md-6 col-sm-7 col-12 order-2 order-sm-1">
-      <h1 class="mt-4">Mengtian (Martin) Li</h1>
-      <p class="mt-5 d-flex align-items-center">Research at &nbsp; &nbsp;
-        <a class="img-btn" href="https://openai.com/">
-          <img src="[img]/openai-lockup.svg" style="width:115px">
-        </a>
-      </p>
-      <p>Email: martinli [dot] work [at] gmail [dot] com</p>
-      <p class="icon-row">
-        <a class="img-btn" href="https://github.com/mtli">
-          <img src="[img]/GitHub-Mark-64px.png" style="width:40px">
-        </a>
-        <a class="img-btn" href="https://scholar.google.com/citations?user=U4w1hqAAAAAJ">
-          <img src="[img]/icons8-google-scholar.svg" style="width:45px">
-        </a>
-        <a class="img-btn" href="https://www.linkedin.com/in/mengtian-martin-li-30164972">
-          <img src="[img]/Linkedin.svg" style="width:40px">
-        </a>
-        <!-- <a class="img-btn" href="[pdf]/Li, Mengtian - CV.pdf?v=1.3">
-          <img src="[img]/cv-icon.png" style="width:40px">
-        </a> -->
-      </p>
-    </div>
-    <div class="col-md-4 col-sm-5 col-12 order-1 order-sm-2">
-      <div class="row align-items-center h-100">
-        <img class="img-profile rounded-circle mx-auto" src="[img]/Martin.jpg" style="width:100%; max-width:240px">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#home">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#papers">Papers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#misc">Misc</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-  
-  <div class="row my-4">
-    <div class="col-lg-12 text-left">
-      <p>I was a Ph.D. student (2017-2022) at
-        <a href="https://www.ri.cmu.edu/">the Robotics Insitute</a>
-        of Carnegie Mellon University, where I was fortunate to work with
-        <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan</a>.
-        Previously, I was a master student at the same institute, advised by
-        <a href="https://www.cs.cmu.edu/~dhuber/">Daniel Huber</a>.
-        I received my B.S. from Kuang Yaming Honors School of
-        <a href="https://www.nju.edu.cn/EN/">Nanjing University</a>.
-      </p>
-      
-      <p>My research interest is in computer vision and machine learning. In particular, I am interested in resource-constrained learning and inference.</p>
-    </div>
-  </div>
-    
-  <hr class="mt-4">
-  
-  <div id="news" class="row pt-4">
-    <div class="col-lg-12 text-left">
-      <h2>News</h2>
-    </div>
-  </div>
-  <div class="row">
-    <table class="news">
-      <tbody>
-        <tr>
-          <td>May 2022</td>
-          <td>Migrated my personal website to github.io</td>
-        </tr>
-        <tr>
-          <td>Apr 2022</td>
-          <td>
-            Defended my Ph.D. thesis! Thesis committee:
-            <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan</a>,
-            <a href="https://www.cs.cmu.edu/~hebert/">Martial Hebert</a>,
-            <a href="https://www.cs.cmu.edu/~satya/">Mahadev (Satya) Satyanarayanan</a>,
-            <a href="https://www.cs.toronto.edu/~urtasun/">Raquel Urtasun</a>, and
-            <a href="https://www.rossgirshick.info/">Ross Girshick</a>.
-          </td>
-        </tr>
-          <td>Apr 2021</td>
-          <td>Invited talk at Georgia Tech RoboGrads Seminar</td>
-        </tr>
-        <tr>
-          <td>Mar 2021</td>
-          <td>Guest lecture at UIUC Advanced Computer Vision course</td>
-        </tr>
-        <tr>
-          <td>Feb 2021</td>
-          <td>Announcing the
-            <a href="https://eval.ai/web/challenges/challenge-page/800/overview">
-              Streaming Perception Challenge</a> (CVPR 2021)!
-          </td>
-        </tr>
-        <tr>
-          <td>Oct 2020</td>
-          <td>Invited talk at Uber ATG</td>
-        </tr>
-        <tr>
-          <td>Aug 2020</td>
-          <td>Won the ECCV Best Paper Honorable Mention Award!</td>
-        </tr>
-        <tr>
-          <td>Apr 2020</td>
-          <td>Invited talk at Aurora</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  </nav>
 
-  <hr class="mt-4">
-  
-  <div id="papers" class="row pt-4">
-  <div class="col-md-10 text-left">
-      <h2 class="mb-4">Papers</h2>
-      <div class="container papers">
+  <div id="home" class="container h-100 px-4">
+    <div class="row justify-content-md-center py-4">
+      <div class="col-md-6 col-sm-7 col-12 order-2 order-sm-1">
+        <h1 class="mt-4">Mengtian (Martin) Li</h1>
+      <p class="mt-5 d-flex align-items-center">Research at &nbsp; &nbsp;
+          <a class="img-btn" href="https://openai.com/">
+            <img src="[img]/openai-lockup.svg" style="width:115px">
+          </a>
+        </p>
+        <p>Email: martinli [dot] work [at] gmail [dot] com</p>
+        <p class="icon-row">
+          <a class="img-btn" href="https://github.com/mtli">
+            <img src="[img]/GitHub-Mark-64px.png" style="width:40px">
+          </a>
+          <a class="img-btn" href="https://scholar.google.com/citations?user=U4w1hqAAAAAJ">
+            <img src="[img]/icons8-google-scholar.svg" style="width:45px">
+          </a>
+          <a class="img-btn" href="https://www.linkedin.com/in/mengtian-martin-li-30164972">
+            <img src="[img]/Linkedin.svg" style="width:40px">
+          </a>
+        </p>
+      </div>
+      <div class="col-md-4 col-sm-5 col-12 order-1 order-sm-2">
+        <div class="row align-items-center h-100">
+        <img class="img-profile rounded-circle mx-auto" src="[img]/Martin.jpg" style="width:100%; max-width:240px">
+        </div>
+      </div>
+    </div>
 
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/range3d.png" width="100%">
+    <div class="row my-4">
+      <div class="col-lg-12 text-left">
+        <p>
+          I am a Member of Technical Staff on the Deep Research team at <a href="https://openai.com/">OpenAI</a>, working on ChatGPT agent. Previously, I was part of the Multimodal team, where I contributed to enhancing the visual reasoning capabilities of our flagship models. I earned my Ph.D. from the <a href="https://www.ri.cmu.edu/">Robotics Institute</a> at Carnegie Mellon University, where I had the privilege of working with <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan</a>.
+        </p>
+        <p>
+          My research interests include multimodal perception and generation, long-horizon tasks, and agentic AI.
+        </p>
+      </div>
+    </div>
+
+    <hr class="mt-4">
+
+
+    <div id="projects" class="row pt-4">
+      <div class="col-md-10 text-left">
+        <h2 class="mb-4">Projects</h2>
+        <div class="container projects">
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <a href="https://openai.com/index/introducing-gpt-5/">GPT-5</a> &nbsp;
+              <span class="text-muted">Aug 2025</span>
+            </div>
           </div>
-          <div class="col-md-8">
-            <p class="mb-4">
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <a href="https://openai.com/index/introducing-chatgpt-agent/">ChatGPT agent</a> &nbsp;
+              <span class="text-muted">Jul 2025</span>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <a href="https://openai.com/index/introducing-o3-and-o4-mini/">o3 and o4-mini</a> &nbsp;
+              <span class="text-muted">Apr 2025</span>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <a href="https://openai.com/index/thinking-with-images/">Thinking with Images</a> &nbsp;
+              <span class="text-muted">Apr 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mt-4">
+
+    <div id="papers" class="row pt-4">
+      <div class="col-md-10 text-left">
+        <h2 class="mb-4">Papers</h2>
+        <div class="container papers">
+
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/range3d.png" width="100%">
+            </div>
+            <div class="col-md-8">
+              <p class="mb-4">
               Neehar Peri, <b>Mengtian Li</b>, Benjamin Wilson, Yu-Xiong Wang, James Hays, Deva Ramanan.
               <em>An Empirical Analysis of Range for 3D Object Detection</em>. In ICCV Workshop, Oct 2023.</p>
-            <p>
-              <a href="https://arxiv.org/abs/2308.04054">[Paper]</a>
-              <a href="[bibtex]/range3d.bib">[Bibtex]</a>
-              <br>
-            </p>
+              <p>
+                <a href="https://arxiv.org/abs/2308.04054">[Paper]</a>
+                <a href="[bibtex]/range3d.bib">[Bibtex]</a>
+                <br>
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/sforecast-teaser.png" width="100%">
-          </div>
-          <div class="col-md-8">
-            <p class="mb-4">
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/sforecast-teaser.png" width="100%">
+            </div>
+            <div class="col-md-8">
+              <p class="mb-4">
               Ziqi Pang, Deva Ramanan, <b>Mengtian Li</b> and Yu-Xiong Wang.
               <em>Streaming Motion Forecasting for Autonomous Driving</em>. In IROS, Oct 2023.</p>
-            <p>
-              <a href="https://arxiv.org/abs/2310.01351">[Paper]</a>
-              <a href="https://github.com/ziqipang/StreamingForecasting">[Code]</a>
-              <a href="[bibtex]/strforecast.bib">[Bibtex]</a>
-              <br>
-            </p>
+              <p>
+                <a href="https://arxiv.org/abs/2310.01351">[Paper]</a>
+                <a href="https://github.com/ziqipang/StreamingForecasting">[Code]</a>
+                <a href="[bibtex]/strforecast.bib">[Bibtex]</a>
+                <br>
+              </p>
+            </div>
+            <br>
           </div>
-          <br>
-        </div>
 
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/progdist-teaser.png" width="100%">
-          </div>
-          <div class="col-md-8">
-            <p class="mb-4">
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/progdist-teaser.png" width="100%">
+            </div>
+            <div class="col-md-8">
+              <p class="mb-4">
               Shengcao Cao, <b>Mengtian Li</b>, James Hays, Deva Ramanan, Yu-Xiong Wang and Liangyan Gui.
               <em>Learning Lightweight Object Detectors via Progressive Knowledge Distillation</em>. In ICML, Jul 2023.</p>
-            <p>
-              <a href="https://openreview.net/forum?id=UVKwsWsXTt">[Paper]</a>
-              <a href="https://github.com/Shengcao-Cao/MTPD">[Code]</a>
-              <a href="[bibtex]/progdist.bib">[Bibtex]</a>
-              <br>
-            </p>
+              <p>
+                <a href="https://openreview.net/forum?id=UVKwsWsXTt">[Paper]</a>
+                <a href="https://github.com/Shengcao-Cao/MTPD">[Code]</a>
+                <a href="[bibtex]/progdist.bib">[Bibtex]</a>
+                <br>
+              </p>
+            </div>
+            <br>
           </div>
-          <br>
-        </div>
 
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/lzu-teaser.gif" width="80%">
-          </div>
-          <div class="col-md-8">
-            <p class="mb-4">
-              Chittesh Thavamani, <b>Mengtian Li</b>, Francesco Ferroni and Deva Ramanan.
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/lzu-teaser.gif" width="80%">
+            </div>
+            <div class="col-md-8">
+              <p class="mb-4">
+                Chittesh Thavamani, <b>Mengtian Li</b>, Francesco Ferroni and Deva Ramanan.
               <em>Learning to Zoom and Unzoom</em>. In CVPR, Jun 2023.</p>
-            <p>
-              <a href="https://tchittesh.github.io/lzu/">[Project page]</a>
-              <a href="https://arxiv.org/abs/2303.15390">[Paper]</a>
-              <a href="https://youtu.be/wALSrBZiUgc">[Talk]</a>
-              <a href="https://github.com/tchittesh/lzu">[Code]</a>
-              <a href="[bibtex]/lzu.bib">[Bibtex]</a>
-              <br>
-            </p>
+              <p>
+                <a href="https://tchittesh.github.io/lzu/">[Project page]</a>
+                <a href="https://arxiv.org/abs/2303.15390">[Paper]</a>
+                <a href="https://youtu.be/wALSrBZiUgc">[Talk]</a>
+                <a href="https://github.com/tchittesh/lzu">[Code]</a>
+                <a href="[bibtex]/lzu.bib">[Bibtex]</a>
+                <br>
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/far3det-teaser.png" width="100%">
-          </div>
-          <div class="col-md-8">
-            <p class="mb-4">
-              Shubham Gupta*, Jeet Kanjani*, <b>Mengtian Li</b>, Francesco Ferroni, James Hays, Deva Ramanan* and Shu Kong*.
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/far3det-teaser.png" width="100%">
+            </div>
+            <div class="col-md-8">
+              <p class="mb-4">
+                Shubham Gupta*, Jeet Kanjani*, <b>Mengtian Li</b>, Francesco Ferroni, James Hays, Deva Ramanan* and Shu Kong*.
               <em>Far3Det: Towards Far-Field 3D Detection</em>. In WACV, Jan 2023.</p>
-            <p>
-              <a href="https://mscvprojects.ri.cmu.edu/2021teamf/">[Project page]</a>
-              <a href="https://arxiv.org/abs/2211.13858">[Paper]</a>
-              <a href="[bibtex]/far3det.bib">[Bibtex]</a>
-              <br>
-            </p>
+              <p>
+                <a href="https://mscvprojects.ri.cmu.edu/2021teamf/">[Project page]</a>
+                <a href="https://arxiv.org/abs/2211.13858">[Paper]</a>
+                <a href="[bibtex]/far3det.bib">[Bibtex]</a>
+                <br>
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/futuredet-teaser.png" width="100%">
-          </div>
-          <div class="col-md-8">
-            <p class="mb-4">
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/futuredet-teaser.png" width="100%">
+            </div>
+            <div class="col-md-8">
+              <p class="mb-4">
               Neehar Peri, Jonathon Luiten, <b>Mengtian Li</b>, Aljosa Osep, Laura Leal-Taixé and Deva Ramanan.
               <em>Forecasting from LiDAR via Future Object Detection</em>. In CVPR, Jun 2022.</p>
-            <p>
-              <a href="https://github.com/neeharperi/FutureDet/">[Project page + code]</a>
-              <a href="https://arxiv.org/abs/2203.16297">[Paper]</a>
-              <a href="[bibtex]/futuredet.bib">[Bibtex]</a>
-              <br>
-            </p>
+              <p>
+                <a href="https://github.com/neeharperi/FutureDet/">[Project page + code]</a>
+                <a href="https://arxiv.org/abs/2203.16297">[Paper]</a>
+                <a href="[bibtex]/futuredet.bib">[Bibtex]</a>
+                <br>
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/na-nas.png" width="100%">
-          </div>
-          <div class="col-md-8">
-            <p class="mt-2 mb-4">
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/na-nas.png" width="100%">
+            </div>
+            <div class="col-md-8">
+              <p class="mt-2 mb-4">
                 Xiaofang Wang, Shengcao Cao*, <b>Mengtian Li*</b>, Kris M. Kitani.
                 <em>Neighborhood-Aware Neural Architecture Search.</em> In BMVC, 2021.</p>
-            <p>
-              <a href="https://arxiv.org/abs/2105.06369">[Paper]</a>
-              <a href="[bibtex]/nanas.bib">[Bibtex]</a>
-              <br>
-            </p>
+              <p>
+                <a href="https://arxiv.org/abs/2105.06369">[Paper]</a>
+                <a href="[bibtex]/nanas.bib">[Bibtex]</a>
+                <br>
+              </p>
+            </div>
           </div>
-        </div>
-        
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/fovea-teaser-no-text.jpg" width="100%">
-          </div>
-          <div class="col-md-8">
-            <p class="mb-4">
+
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/fovea-teaser-no-text.jpg" width="100%">
+            </div>
+            <div class="col-md-8">
+              <p class="mb-4">
                 Chittesh Thavamani*, <b>Mengtian Li*</b>, Nicolas Cebron, Deva Ramanan. <em>
                 FOVEA: Foveated Image Magnification for Autonomous Navigation.</em> In ICCV, 2021.</p>
-            <p>
-              <a href="fovea/">[Project page]</a>
-              <a href="https://arxiv.org/abs/2108.12102">[Paper]</a>
-              <a href="fovea/FOVEA - Poster.pdf">[Poster]</a>
-              <a href="https://github.com/tchittesh/FOVEA">[Code]</a>
-              <a href="[bibtex]/fovea.bib">[Bibtex]</a>
-              <br>
-            </p>
+              <p>
+                <a href="fovea/">[Project page]</a>
+                <a href="https://arxiv.org/abs/2108.12102">[Paper]</a>
+                <a href="fovea/FOVEA - Poster.pdf">[Poster]</a>
+                <a href="https://github.com/tchittesh/FOVEA">[Code]</a>
+                <a href="[bibtex]/fovea.bib">[Bibtex]</a>
+                <br>
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/streaming-teaser.jpg" width="100%">
-          </div>
-          <div class="col-md-8">
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/streaming-teaser.jpg" width="100%">
+            </div>
+            <div class="col-md-8">
             <p class="mb-1"><b>Mengtian Li</b>, Yu-Xiong Wang and Deva Ramanan. <em>Towards Streaming Perception.</em> In ECCV, 2020.</p>
-            <p class="mb-4 spotlight">Best Paper Honorable Mention</p>
-            <p>
-              <a href="streaming/">[Project page + talk + data]</a>
-              <a href="https://arxiv.org/abs/2005.10420">[Paper]</a>
-              <a href="https://github.com/mtli/sAP">[Code]</a>
-              <a href="[bibtex]/streaming.bib">[Bibtex]</a>
-            </p>
+              <p class="mb-4 spotlight">Best Paper Honorable Mention</p>
+              <p>
+                <a href="streaming/">[Project page + talk + data]</a>
+                <a href="https://arxiv.org/abs/2005.10420">[Paper]</a>
+                <a href="https://github.com/mtli/sAP">[Code]</a>
+                <a href="[bibtex]/streaming.bib">[Bibtex]</a>
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="row mb-4">
+          <div class="row mb-4">
             <div class="m-5 m-sm-0 col-md-3">
               <img class="mx-auto d-block" src="[img]/budget-teaser.png" width="90%">
             </div>
@@ -342,101 +314,97 @@
               </p>
             </div>
           </div>
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/sketch-teaser.jpg" width="90%">
-          </div>
-          <div class="col-md-8">
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/sketch-teaser.jpg" width="90%">
+            </div>
+            <div class="col-md-8">
             <p class="mb-4"><b>Mengtian Li</b>, Zhe Lin, Radomír Měch, Ersin Yumer and Deva Ramanan. <em>Photo-Sketching: Inferring Contour Drawings from Images.</em> In WACV, 2019.</p>
-            <p>
-              <a href="sketch/">[Project page]</a>
-              <a href="https://arxiv.org/abs/1901.00542">[Paper]</a>
-              <a href="https://github.com/mtli/PhotoSketch">[Code]</a>
-              <a href="[bibtex]/sketch.bib">[Bibtex]</a>
-            </p>
+              <p>
+                <a href="sketch/">[Project page]</a>
+                <a href="https://arxiv.org/abs/1901.00542">[Paper]</a>
+                <a href="https://github.com/mtli/PhotoSketch">[Code]</a>
+                <a href="[bibtex]/sketch.bib">[Bibtex]</a>
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/bffl-teaser3.png" width="90%">
-          </div>
-          <div class="col-md-8">
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/bffl-teaser3.png" width="90%">
+            </div>
+            <div class="col-md-8">
             <p class="mb-4"><b>Mengtian Li</b>, Laszlo Jeni, Deva Ramanan. <em>Brute-Force Facial Landmark Analysis with a 140,000-Way Classifier.</em> In AAAI, 2018.</p>
-            <p>
-              <a href="https://arxiv.org/abs/1802.01777">[Paper]</a>
-              <a href="https://github.com/mtli/BFFL">[Code]</a>
-              <a href="[bibtex]/faciallandmark.bib">[Bibtex]</a>
-            </p>
+              <p>
+                <a href="https://arxiv.org/abs/1802.01777">[Paper]</a>
+                <a href="https://github.com/mtli/BFFL">[Code]</a>
+                <a href="[bibtex]/faciallandmark.bib">[Bibtex]</a>
+              </p>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/guaranteed-teaser2.png" width="80%">
+            </div>
+            <div class="col-md-8">
+              <p class="mb-4"><b>Mengtian Li</b>, Daniel Huber. <em>Guaranteed Parameter Estimation for Discrete Energy Minimization.</em> In WACV, 2017.</p>
+              <p>
+                <a href="https://arxiv.org/abs/1701.03151">[Paper]</a>
+                <a href="[bibtex]/guaranteed.bib">[Bibtex]</a>
+              </p>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="m-5 m-sm-0 col-md-3">
+              <img class="mx-auto d-block" src="[img]/complexity-teaser2.png" width="95%">
+            </div>
+            <div class="col-md-8">
+              <p class="mb-1"><b>Mengtian Li</b>, Alexander Shekhovtsov, Daniel Huber. <em>Complexity of Discrete Energy Minimization Problems</em> In ECCV, 2016.</p>
+              <p class="mb-4 spotlight">Spotlight Presentation</p>
+              <p>
+                <a href="https://arxiv.org/abs/1607.08905">[Paper]</a>
+                <a href="https://www.cs.cmu.edu/~mengtial/pdf/Li, Mengtian - ECCV 2016 - Poster.pdf">[Poster]</a>
+                <a href="http://videolectures.net/eccv2016_shekhovtsov_discrete_energy/">[Talk]</a>
+                <a href="[bibtex]/complexity.bib">[Bibtex]</a>
+              </p>
+            </div>
           </div>
         </div>
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/guaranteed-teaser2.png" width="80%">
-          </div>
-          <div class="col-md-8">
-            <p class="mb-4"><b>Mengtian Li</b>, Daniel Huber. <em>Guaranteed Parameter Estimation for Discrete Energy Minimization.</em> In WACV, 2017.</p>
-            <p>
-              <a href="https://arxiv.org/abs/1701.03151">[Paper]</a>
-              <a href="[bibtex]/guaranteed.bib">[Bibtex]</a>
-            </p>
-          </div>
-        </div>
-        <div class="row mb-4">
-          <div class="m-5 m-sm-0 col-md-3">
-            <img class="mx-auto d-block" src="[img]/complexity-teaser2.png" width="95%">
-          </div>
-          <div class="col-md-8">
-            <p class="mb-1"><b>Mengtian Li</b>, Alexander Shekhovtsov, Daniel Huber. <em>Complexity of Discrete Energy Minimization Problems</em> In ECCV, 2016.</p>
-            <p class="mb-4 spotlight">Spotlight Presentation</p>
-            <p>
-              <a href="https://arxiv.org/abs/1607.08905">[Paper]</a>
-              <a href="https://www.cs.cmu.edu/~mengtial/pdf/Li, Mengtian - ECCV 2016 - Poster.pdf">[Poster]</a>
-              <a href="http://videolectures.net/eccv2016_shekhovtsov_discrete_energy/">[Talk]</a>
-              <a href="[bibtex]/complexity.bib">[Bibtex]</a>
-            </p>
-          </div>
-        </div>
+      </div>
     </div>
-  </div>
-  </div>
 
-  <hr class="mt-4">
-  
-  <div id="misc" class="row pt-4 mb-3">
-    <div class="col-lg-12 text-left">
-      <h2>Misc</h2>
+    <hr class="mt-4">
+
+    <div id="misc" class="row pt-4 mb-3">
+      <div class="col-lg-12 text-left">
+        <h2>Misc</h2>
+      </div>
     </div>
-  </div>
-  
-  <div class="row mb-3">
-    <div class="col-lg-12">
+    <div class="row mb-3">
+      <div class="col-lg-12">
       <p>Confucius (孔子) once said: &#8220;<i>if a craftsman wants to do good work, he must first sharpen his tools</i> (工欲善其事，必先利其器).&#8221;
         I find that this concept also applies to research.
         Over the years, I have created various tools related to my research and I have some of them open sourced on Github:
-      </p>
-      <ul>
+        </p>
+        <ul>
         <li><a href="https://github.com/mtli/HTML4Vision">HTML4Vision</a>: a python-HTML-javascript tool for visualizing datasets, comparing algorithms and making figures</li>
         <li><a href="https://github.com/mtli/MTCMon">MTCMon</a>: a web-based cluster resource monitor (widely adopted at CMU RI)</li>
-        <li><a href="https://github.com/mtli/parscript">parscript</a>: utilities for parallel or distributed execution of jobs</li>
-        <li><a href="https://github.com/mtli/nntime">nntime</a>: utilities for timing deep network modules</li>
-        <li><a href="https://github.com/mtli/llcv">llcv</a>: an extensible framework for low-latency computer vision research</li>
         <li><a href="https://mtli.github.io/gpubench/">DLGPUBench</a>: a latency-focused GPU benchmark for deep learning</li>
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
-<footer class="text-center mt-5">
+  <footer class="text-center mt-5">
   <p>Ⓒ  &nbsp; 2025 &nbsp; Mengtian (Martin) Li &nbsp;</p>
-</footer>
+  </footer>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71310278-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71310278-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-71310278-2');
-</script>
+    gtag('js', new Date());
+    gtag('config', 'UA-71310278-2');
+  </script>
 
 </body>
 </html>
